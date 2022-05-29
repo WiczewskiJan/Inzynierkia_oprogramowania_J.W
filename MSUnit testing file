@@ -1,0 +1,66 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Prime.Services;
+
+namespace UnitTests.Services
+{
+    [TestClass]
+    public class PrimeService_Test
+    {
+        private readonly PrimeService _primeService;
+
+        public PrimeService_Test()
+        {
+            _primeService = new PrimeService();
+        }
+
+        //[Fact] - < 2
+        [TestMethod]
+        public void InputIsEqualMinus1_ReturnFalse()
+        {
+            var result = _primeService.IsPrime(-1);
+
+            Assert.IsFalse(result, $"-1 should not be prime");
+        }
+
+        [TestMethod]
+        public void InputIsEqual0_ReturnFalse()
+        {
+            var result = _primeService.IsPrime(0);
+
+            Assert.IsFalse(result, $"0 should not be prime");
+        }
+
+        [TestMethod]
+        public void InputIsEqual1_ReturnFalse()
+        {
+            var result = _primeService.IsPrime(1);
+
+            Assert.IsFalse(result, $"1 should not be prime");
+        }
+        
+        //[Fact] - > 1
+        [TestMethod]
+        public void InputIsEqual2_ReturnTrue()
+        {
+            var result = _primeService.IsPrime(2);
+
+            Assert.IsTrue(result, $"2 should be prime");
+        }
+
+        [TestMethod]
+        public void InputIsEqual3_ReturnTrue()
+        {
+            var result = _primeService.IsPrime(3);
+
+            Assert.IsTrue(result, $"3 should be prime");
+        }
+
+        [TestMethod]
+        public void InputIsEqual4_ReturnTrue()
+        {
+            var result = _primeService.IsPrime(4);
+
+            Assert.IsFalse(result, $"4 should be prime");
+        }
+    }
+}
